@@ -16,24 +16,48 @@ use App\Http\Controllers\ContactController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        'title' => 'Home',
+        'section' => 'Welcome To',
+        'button' => 'Details'
+    ]);
 });
 
-Route::prefix('/category') -> group(function () {
-    Route::get('/product', function () {
-        return view('product');
-    });
-    Route::get('/program', function() {
-        return view('program');
-    });
+// Route::prefix('/category') -> group(function () {
+//     Route::get('/product', function () {
+//         return view('product');
+//     });
+//     Route::get('/program', function() {
+//         return view('program');
+//     });
+// });
+
+Route::get('/product', function () {
+    return view('product', [
+        'title' => 'Product',
+        'section' => 'Our Menus',
+        'button' => 'Read More'
+    ]);
 });
 
-Route::get('/news/{news?}', function ($news='') {
-    return 'Halaman News ' .$news; 
+Route::get('/program', function () {
+    return view('program', [
+        'title' => 'Program',
+        'section' => "Today's Special",
+        'button' => 'Read More'
+    ]);
 });
 
-Route::get('/about-us', function () {
-    return view('about-us');
-});    
+Route::get('/contact', function () {
+    return view('contact', [
+        'title' => 'Contact',
+        'section' => "Contact Us",
+        'button' => 'Message Us'
+    ]);
+});
 
-Route::resource('/contact-us', ContactController::class) -> only('store');
+// Route::get('/news/{news?}', function ($news='') {
+//     return 'Halaman News ' .$news; 
+// });
+
+// Route::resource('/contact', ContactController::class) -> only('store');
