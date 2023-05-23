@@ -1,6 +1,10 @@
 <?php
 
+use App\Models\Coffee;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CoffeeController;
 use App\Http\Controllers\ContactController;
 
 /*
@@ -16,27 +20,19 @@ use App\Http\Controllers\ContactController;
 */
 
 Route::get('/', function () {
-    return view('home', [
+    return view('index', [
         'title' => 'Home',
         'section' => 'Welcome To',
         'button' => 'Details'
     ]);
 });
 
-// Route::prefix('/category') -> group(function () {
-//     Route::get('/product', function () {
-//         return view('product');
-//     });
-//     Route::get('/program', function() {
-//         return view('program');
-//     });
-// });
-
 Route::get('/product', function () {
     return view('product', [
         'title' => 'Product',
         'section' => 'Our Menus',
-        'button' => 'Read More'
+        'button' => 'Read More',
+        'coffees' => Coffee::all()
     ]);
 });
 
@@ -56,8 +52,8 @@ Route::get('/contact', function () {
     ]);
 });
 
-// Route::get('/news/{news?}', function ($news='') {
-//     return 'Halaman News ' .$news; 
-// });
+Route::resource('coffee', CoffeeController::class);
 
-// Route::resource('/contact', ContactController::class) -> only('store');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
