@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('Nim', 16)->unique();
             $table->string('Nama', 64);
-            $table->string('Kelas', 16);
+            $table->unsignedBigInteger('kelas_id')->nullable();
+            $table->foreign('kelas_id')->references('id')->on('kelas');
             $table->string('Jurusan', 32);
             $table->string('No_Handphone', 16);
             $table->timestamps();
