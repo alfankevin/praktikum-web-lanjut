@@ -23,10 +23,10 @@
     </table>
     <table class="table table-bordered">
         <tr>
-            <th style="width: 500px"><p><b>Mata Kuliah</b></p></th>
-            <th><p><b>SKS</b></p></th>
-            <th><p><b>Semester</b></p></th>
-            <th><p><b>Nilai</b></p></th>
+            <th style="width: 500px"><p class="m-0"><b>Mata Kuliah</b></p></th>
+            <th><p class="m-0"><b>SKS</b></p></th>
+            <th><p class="m-0"><b>Semester</b></p></th>
+            <th><p class="m-0"><b>Nilai</b></p></th>
         </tr>
         @foreach ($Mahasiswa->matakuliah as $item)
             <tr>
