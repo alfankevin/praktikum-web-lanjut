@@ -5,7 +5,8 @@ namespace App\Http\Requests;
 use App\Traits\ApiResponse;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-
+use Illuminate\Contracts\Validation\Validator;
+use Symfony\Component\HttpFoundation\Response;
 abstract class ApiRequest extends FormRequest
 {
     use ApiResponse;
